@@ -7,7 +7,7 @@ export default function Stats({ lang }) {
         <div className="stats-grid">
           {PORTFOLIO.stats.map((s, i) => (
             <div key={i} className={`stat reveal reveal-d${i}`}>
-              <b>{s.value}</b>
+              <b>{typeof s.value === 'string' ? s.value : s.value[lang]}</b>
               <span>{s.label[lang]}</span>
             </div>
           ))}

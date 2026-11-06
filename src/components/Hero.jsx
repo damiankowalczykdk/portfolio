@@ -1,5 +1,5 @@
 import { PORTFOLIO } from '../data/content';
-import { ArrowIcon } from '../icons';
+import { ArrowIcon, DownloadIcon } from '../icons';
 import { handleAnchor } from '../utils/scroll';
 import CodeStream from './CodeStream';
 
@@ -70,6 +70,10 @@ export default function Hero({ lang }) {
             </a>
             <a className="btn btn-ghost" href="#contact" onClick={(e) => handleAnchor(e, '#contact')}>
               {t('cta_contact')}
+            </a>
+            <a className="btn btn-ghost" href={PORTFOLIO.links.cv[lang]} download>
+              <DownloadIcon />
+              <span>{t('cta_cv')}</span>
             </a>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { PORTFOLIO } from '../data/content';
-import { CodeIcon } from '../icons';
+import { CodeIcon, ArrowIcon } from '../icons';
 
 export default function Projects({ lang }) {
   const t = (key) => PORTFOLIO.ui[lang][key] || key;
@@ -40,9 +40,20 @@ export default function Projects({ lang }) {
                   ))}
                 </ul>
                 <div className="project-foot">
+                  {pr.demo && (
+                    <a
+                      className="btn btn-primary btn-sm"
+                      href={pr.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>{t('cta_demo')}</span>
+                      <ArrowIcon />
+                    </a>
+                  )}
                   <a
                     className="btn btn-ghost btn-sm"
-                    href={PORTFOLIO.links.github}
+                    href={pr.repo || PORTFOLIO.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

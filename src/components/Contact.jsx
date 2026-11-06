@@ -1,5 +1,5 @@
 import { PORTFOLIO } from '../data/content';
-import { LinkedinIcon, GithubIcon, MailIcon } from '../icons';
+import { LinkedinIcon, GithubIcon, MailIcon, DownloadIcon } from '../icons';
 
 export default function Contact({ lang }) {
   const t = (key) => PORTFOLIO.ui[lang][key] || key;
@@ -49,6 +49,13 @@ export default function Contact({ lang }) {
                 </span>
               </a>
             )}
+            <a className="contact-card" href={links.cv[lang]} download>
+              <DownloadIcon />
+              <span>
+                <span className="cc-label">{t('contact_cv_label')}</span>
+                <span className="cc-val">{t('cta_cv')}</span>
+              </span>
+            </a>
           </div>
         </div>
       </div>

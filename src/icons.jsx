@@ -38,3 +38,11 @@ export function CodeIcon() {
     </svg>
   );
 }
+
+export function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M12 3v12M7 10l5 5 5-5M4 19h16" />
+    </svg>
+  );
+}

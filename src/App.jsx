@@ -5,6 +5,7 @@ import Stats from './components/Stats';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { useScrollReveal } from './hooks/useScrollReveal';
@@ -27,6 +28,7 @@ export default function App() {
       <About lang={lang} />
       <Skills lang={lang} />
       <Projects lang={lang} />
+      <Experience lang={lang} />
       <Contact lang={lang} />
       <Footer lang={lang} />
     </>

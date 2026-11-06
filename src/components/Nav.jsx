@@ -37,6 +37,7 @@ export default function Nav({ lang, setLang }) {
           <a href="#about" onClick={(e) => handleAnchor(e, '#about')}>{t('nav_about')}</a>
           <a href="#skills" onClick={(e) => handleAnchor(e, '#skills')}>{t('nav_skills')}</a>
           <a href="#projects" onClick={(e) => handleAnchor(e, '#projects')}>{t('nav_projects')}</a>
+          <a href="#experience" onClick={(e) => handleAnchor(e, '#experience')}>{t('nav_experience')}</a>
           <a href="#contact" onClick={(e) => handleAnchor(e, '#contact')}>{t('nav_contact')}</a>
         </div>
         <div className="nav-tools">
@@ -69,6 +70,7 @@ export default function Nav({ lang, setLang }) {
         <a href="#about" onClick={(e) => closeMenu(e, '#about')}>{t('nav_about')}</a>
         <a href="#skills" onClick={(e) => closeMenu(e, '#skills')}>{t('nav_skills')}</a>
         <a href="#projects" onClick={(e) => closeMenu(e, '#projects')}>{t('nav_projects')}</a>
+        <a href="#experience" onClick={(e) => closeMenu(e, '#experience')}>{t('nav_experience')}</a>
         <a href="#contact" onClick={(e) => closeMenu(e, '#contact')}>{t('nav_contact')}</a>
       </div>
       <div

@@ -18,22 +18,24 @@ async def login(data: LoginIn, users=Depends(get_users)):
     refresh = create_refresh_token(sub=user.id)
     return TokenPair(access=access, refresh=refresh)`;
 
-const ABOUT_CODE_B = `import asyncio
-from concurrent.futures import ThreadPoolExecutor
-import httpx
+const ABOUT_CODE_B = `from datetime import timedelta
+from temporalio import workflow
 
-pool = ThreadPoolExecutor(max_workers=16)
+@workflow.defn
+class ReservationWorkflow:
+    def __init__(self) -> None:
+        self.paid = False
 
-async def fan_out(targets: list[str]) -> list[dict]:
-    async with httpx.AsyncClient(timeout=5.0) as client:
-        tasks = [client.get(url) for url in targets]
-        responses = await asyncio.gather(*tasks)
-    return [r.json() for r in responses]
+    @workflow.signal
+    def payment_confirmed(self) -> None:
+        self.paid = True
 
-# 75% faster service-to-service calls
-async def aggregate(user_id: str):
-    data = await fan_out(service_urls(user_id))
-    return merge(data)`;
+    @workflow.run
+    async def run(self, group_id: int, email: str) -> None:
+        await workflow.wait_condition(
+            lambda: self.paid, timeout=timedelta(minutes=15)
+        )
+        await send_tickets(group_id, email)`;
 
 export default function About({ lang }) {
   const t = (key) => PORTFOLIO.ui[lang][key] || key;
